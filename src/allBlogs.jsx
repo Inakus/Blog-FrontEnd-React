@@ -4,7 +4,7 @@ import Content from "./content";
 
 const apiURL = 'http://localhost:4000/';
 
-export default function Body(props){
+export default function AllBlogs(props){
 
     const [post, setPost] = useState(null);
 
