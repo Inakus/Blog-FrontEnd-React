@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Content from "./content";
+import Content from "./Content";
 
 export default function BlogPost(props){
 

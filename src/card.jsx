@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 
 export default function Card(props){
 
-    const content = props.content;
-
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
             <div className="font-bold text-xl mb-2">{props.title}</div>
             <hr />
             <p className="text-gray-700 text-base">                    
-                {content.slice(0,20)}
+                {props.content.slice(0,20)}
             </p>
             <ul className="flex flex-row list-none ml-auto justify-between">
                 <li><Link className="px-3 py-2 flex items-center text-xs text-blue-500 hover:opacity-75" to={'/blog/' + props.id}>See More</Link></li>

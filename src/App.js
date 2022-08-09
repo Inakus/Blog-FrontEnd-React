@@ -2,27 +2,37 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AllBlogs from "./allBlogs";
+import env from 'react-dotenv';
+import AllBlogs from "./AllBlogs";
 import Navbar from "./Navbar/Navbar";
-import Search from "./search";
-import Home from "./home";
-import Post from "./post";
+import Search from "./Search";
+import Home from "./Home";
+import Post from "./Post";
 import BlogPost from "./BlogPost";
+import Error404 from "./Error404";
 
-const urlAPI = "http://localhost:4000/"
+
+const client = axios.create({
+  baseURL: env.API_URL
+});
 
 
 function App() {
   const [post, setPost] = useState(null)
 
   useEffect(() => {
-    axios.get(urlAPI).then(response => { 
+    async function getPost(){
+      const response = await client.get('/');
       setPost(response.data)
-    })
+    }
+    getPost()
+    // axios.get(urlAPI).then(response => { 
+    //   return setPost(response.data)
+    // })
   }, [post])
 
   function deletePost(newId){
-    axios.delete(urlAPI + newId).then(alert('Post Deleted!'))
+    return axios.delete(env.API_URL + newId).then(alert('Post Deleted!'))
   }
 
   if(!post) return null;
@@ -32,11 +42,12 @@ function App() {
    <BrowserRouter>
       <Navbar></Navbar>
     <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/post" element={<Post url={urlAPI}/>}></Route>
-      <Route path="/search" element={<Search post={post} deletePost={deletePost}/>}></Route>
-      <Route path="/blogs" element={<AllBlogs />}></Route>
-      <Route path="/blog/:id" element={<BlogPost post={post}/>}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/post" element={<Post url={env.API_URL}/>}></Route>
+        <Route path="/search" element={<Search post={post} deletePost={deletePost}/>}></Route>
+        <Route path="/blogs" element={<AllBlogs post={post}/>}></Route>
+        <Route path="/blog/:id" element={<BlogPost post={post}/>}></Route>
+        <Route path="*" element={<Error404 />}></Route>
     </Routes>
    </BrowserRouter>
    </>
