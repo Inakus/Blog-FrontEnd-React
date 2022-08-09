@@ -15,7 +15,7 @@ export default function AllBlogs(props){
                 {post.map((element, index) => {
                     return(
                         <div key={index} className="text-center">
-                            <Content title={element.title} content={element.content.slice(0,100)}></Content>
+                            <Content title={element.title} content={element.content?.slice(0,100)}></Content>
                             <Link className="text-blue-500" to={'/blog/' + element._id}>See More</Link>
                             <hr />
                         </div>

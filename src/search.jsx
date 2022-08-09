@@ -43,7 +43,7 @@ export default function Search(props){
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {post.map((element) => {
-                        return element.title === search &&  <Card key={element._id} deletePost={deletePost} id={element._id} title={element.title} content={element.content}></Card> 
+                        return element.title?.toLowerCase() === search?.toLowerCase() &&  <Card key={element._id} deletePost={deletePost} id={element._id} title={element.title} content={element.content}></Card> 
                     })}
                 </div>
             </div>

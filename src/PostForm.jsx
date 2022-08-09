@@ -2,12 +2,12 @@ import { useState } from "react"
 
 export default function PostForm(props){
 
-    const [title, setTitle] = useState('');
-    const [content, setContent] =  useState('');
+    const [title, setTitle] = useState(props.id ? props.title : '');
+    const [content, setContent] =  useState(props.id ? props.content : '');
 
     function changePost(event){
-        if(event.target.name === 'title') return setTitle(event.target.value);
-        if(event.target.name === 'content') return setContent(event.target.value);
+            if(event.target.name === 'title') return setTitle(event.target.value);
+            if(event.target.name === 'content') return setContent(event.target.value);
     }
 
     function createPost(){
@@ -44,7 +44,7 @@ export default function PostForm(props){
             <div className="xl2:flex xl2:items-center">
                 <div className="xl2:w-1/3"></div>
                 <div className="xl2:w-2/3">
-                    <button type="submit" disabled={disableButton()} className="bg-blue-500 disabled:bg-gray-600 enabled:hover:bg-blue-700 text-white font-bold py-2 px-4 border disabled:border-gray-600 border-blue-700 rounded" onClick={createPost}>Add new Post to Blog</button>
+                    <button type="submit" disabled={disableButton()} className="bg-blue-500 disabled:bg-gray-600 enabled:hover:bg-blue-700 text-white font-bold py-2 px-4 border disabled:border-gray-600 border-blue-700 rounded" onClick={createPost }>{props.id ? 'Edit Blog Post' : 'Add new Post to Blog'}</button>
                 </div>
             </div>
         </div>
