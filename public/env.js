@@ -61,7 +61,7 @@ window.env = {
   "HOMEBREW_PREFIX": "/opt/homebrew",
   "ITERM_SESSION_ID": "w0t0p0:ADBC51EC-1199-40CF-AE05-50E4C4E8E8F2",
   "npm_config_cache": "/Users/inakus/.npm",
-  "STARSHIP_SESSION_KEY": "1904520902284315",
+  "STARSHIP_SESSION_KEY": "3145132488243152",
   "LESS": "-R",
   "LOGNAME": "inakus",
   "npm_lifecycle_script": "react-dotenv && react-scripts start",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Content from "./Content";
 import { Link } from "react-router-dom";
+import Content from "./Content";
 
 export default function AllBlogs(props){
 

@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { apiUrl } from "../../App";
 import PostForm from "./PostForm";
-import { apiUrl } from "./App";
-export default function Edit(props){
 
-    const location = useLocation();
+export default function Edit(){
+
+    const location = useLocation()
     const navigate = useNavigate();
     const {id, title, content} = location.state;
     const params = new URLSearchParams();
@@ -14,7 +15,7 @@ export default function Edit(props){
         params.append('title', newTitle);
         params.append('content', newContent);
         axios.patch(newUrl, params);
-        redirect && navigate('/blog/' + id);
+        navigate('/blog/' + id);
     };
     
     return (
